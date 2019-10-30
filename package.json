@@ -1,0 +1,26 @@
+{
+  "name": "sales-api",
+  "version": "1.0.0",
+  "description": "API created that mocks an intergalactic checkout line at Jupiter's 7/11",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Abdel Shokair",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "clear": "^0.1.0",
+    "figlet": "^1.2.4",
+    "inquirer": "^7.0.0",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2"
+  }
+}
