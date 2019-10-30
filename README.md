@@ -21,7 +21,7 @@ It is important to note that this project launches a command-line interface (or 
 In order to run the application, simply:
 
   1. Clone this file onto your computer by choosing a directory in your terminal and typing: `git clone https://github.com/abdelshok/sales-api.git`
-  2. Type `cd sales-api` in the terminal in order to move into the newly cloned file
+  2. Type `cd sales-api` in the terminal in order to move into the newly cloned directory
   3. Once in the **sales-api** directory, run: `npm install` to install all of the dependencies 
   4. Finally, run: `node index.js` in the terminal in order to launch the CLI of this revolutionary alien software
 
@@ -39,14 +39,14 @@ This app ids only made of one npm package, there is therefore only one place to 
 
 ### Run the API server
 
+There is no `npm start` script set up here, so running the command in the terminal here will only lead to an error. In order to continuously test out the CLI, make changes to the files, make sure to save, and run `node index.js` to launch the program and review the changes. 
+
 In a terminal:
 
 ```bash
 # Initial setup
 npm install
 
-# Start the server
-npm start
 ```
 
 #### Install new npm packages for Node
