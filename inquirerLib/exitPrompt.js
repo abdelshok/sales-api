@@ -1,13 +1,16 @@
+// Prompts to exit the application. Two options: go back to main menu or exit
+
 'use strict';
 
 // External Packages
-const chalk = require('chalk');
 const inquirer = require('inquirer');
 const clear = require('clear');
 // Internal Modules
-const helper = require('../helper');
+const { important } = require('../chalk');
+const generalHelper = require('../utilityLib/generalHelper');
 const inquirerLibrary = require('./inquirerLibrary'); // TOENSURE: Why is the inquirerLibrary object empty here but full in the index.js function that we run initially
 let { initialPrompt } = require('./initialPrompt');
+
 
 let exitPrompt = () => {
     const questions = [
@@ -27,10 +30,10 @@ let exitPrompt = () => {
     ]
     return inquirer.prompt(questions).then(async (answer) => {
         let { exitNextPrompt } = answer;
-        let userSelection = helper.findUserSelection(exitNextPrompt);
+        let userSelection = generalHelper.findUserSelection(exitNextPrompt);
         
         if (userSelection === 'A') {
-            console.log(chalk.bold.magenta('See you soon!'));
+            console.log(important('See you soon!'));
             return 'Bye';
         } else if (userSelection == 'B') {
             clear();

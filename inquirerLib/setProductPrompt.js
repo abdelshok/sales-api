@@ -1,10 +1,11 @@
+// Prompts to set/create product, set prices, and store them in the right data structures
+
 'use strict';
 
 // External Packages
 const inquirer = require('inquirer');
-const chalk = require('chalk');
 // Internal Modules
-const helper = require('../helper');
+const setProductHelper = require('../utilityLib/setProductHelper');
 const prices = require('../itemPrices');
 const { exitPrompt } = require('./exitPrompt');
 // Product Selection
@@ -59,7 +60,7 @@ let setProductPrompt = () => {
     inquirer.prompt(questions).then((answer) => {
         let { setProductPrompt } = answer;
         console.log('User is trying to change or create item', setProductPrompt);
-        let productExists = helper.checkIfProductExists(setProductPrompt, product.itemPricesHash);
+        let productExists = setProductHelper.checkIfProductExists(setProductPrompt, product.itemPricesHash);
         if (productExists) {
             console.log('Product exists. You can now set the price and quantity');
         } else {

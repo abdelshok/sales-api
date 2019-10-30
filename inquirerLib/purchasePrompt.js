@@ -1,7 +1,9 @@
+// Prompts to go through the checkout line and purchase a series of items 
+
 'use strict';
 
 const inquirer = require('inquirer');
-const helper = require('../helper');
+const checkoutHelper = require('../utilityLib/checkoutHelper');
 const prices = require('../itemPrices');
 const inquirerLibrary = require('./inquirerLibrary');
 const { exitPrompt } = require('./exitPrompt');
@@ -51,7 +53,7 @@ let inputItemsPrompt = () => {
     inquirer.prompt(questions).then(async (answer) => {
         let { purchaseList } = answer;
         let { itemPricesHash, itemPricesArray } = prices;
-        helper.calculateTotalPrice(purchaseList, itemPricesHash, itemPricesArray);
+        checkoutHelper.calculateTotalPrice(purchaseList, itemPricesHash, itemPricesArray);
         exitPrompt();
     })
 };

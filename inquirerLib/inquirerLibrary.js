@@ -1,4 +1,6 @@
-// Source file where we'll require all of the created inquirer prompts and fucntionality
+// Source file where we require all of the created inquirer prompts and functionality
+// Makes all of the prompts more easily accessible at once
+
 'use strict'
 
 const initialPrompt = require('./initialPrompt');

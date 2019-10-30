@@ -1,5 +1,5 @@
 // Object which holds a list of existing items in the store, their unit price, and their volume prices
-// They're both essentially hash tables but have different data structures in order to optimize on the look up time
+// Both hash tables but have different data structures inside in order to optimize on the look up time
 // Will be explained later on.
 
 let itemPricesArray = {
@@ -9,8 +9,8 @@ let itemPricesArray = {
     'D':[[1, 0.15]] // Here, one item can be bought for $0.15
 };
 
-// Hash created here so that if the user decides to set a new volume price, we can quickly check
-// if it exists or not already, replace it if so, or simply create it if it doesn't exist yet
+// Hash table created here so that if the user decides to set a new volume price, we can quickly check
+// if the price exists or not already, replace it if so, or simply create it if it doesn't exist yet
 let itemPricesHash = {
     'A': {
         1: 2.00,

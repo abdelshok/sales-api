@@ -1,10 +1,11 @@
+// Initial prompt that starts the whole application
 
 'use strict';
 
 // External Packages
 const inquirer = require('inquirer');
 // Internal Modules
-const helper = require('../helper');
+const generalHelper = require('../utilityLib/generalHelper');
 const { purchasePrompt } = require('./purchasePrompt');
 const { setProductPrompt } = require('./setProductPrompt');
 
@@ -28,7 +29,7 @@ let initialPrompt = () => {
     ]
     return inquirer.prompt(questions).then((answer) => {
         let { welcomeSelection } = answer;
-        let userSelection = helper.findUserSelection(welcomeSelection);
+        let userSelection = generalHelper.findUserSelection(welcomeSelection);
 
         if (userSelection === 'A') {
             // TODELETE: console.log('User selected option A \n');
@@ -39,7 +40,7 @@ let initialPrompt = () => {
         } else if (userSelection === 'C') {
             console.log('User selected option C \n');
         } else if (userSelection === 'D') {
-            helper.boom()
+            generalHelper.boom()
         }
     });
 }
