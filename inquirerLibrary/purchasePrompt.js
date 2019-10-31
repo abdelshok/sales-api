@@ -1,4 +1,5 @@
 // Prompts to go through the checkout line and purchase a series of items 
+
 'use strict';
 
 let purchasePrompt = () => {
@@ -52,7 +53,7 @@ let inputItemsPrompt = () => {
 };
 
 module.exports = {
-    purchasePrompt
+    purchasePrompt,
 }
 
 const inquirer = require('inquirer');

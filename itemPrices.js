@@ -1,6 +1,8 @@
 // Object which holds a list of existing items in the store, their unit price, and their volume prices
 // Both hash tables but have different data structures inside in order to optimize on the look up time
 // Will be explained later on.
+/* eslint-disable indent */
+
 
 let itemPricesArray = {
     'A':[[1, 2.00], [2, 4.00], [4, 7.00]], // First integer of each subarray is the quantity for that price
@@ -31,5 +33,5 @@ let itemPricesHash = {
 
 module.exports = {
     itemPricesArray,
-    itemPricesHash
+    itemPricesHash,
 }

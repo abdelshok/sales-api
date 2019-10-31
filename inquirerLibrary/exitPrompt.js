@@ -20,7 +20,7 @@ let exitPrompt = () => {
     ]
     inquirer.prompt(questions).then((answer) => {
         let { exitNextPrompt } = answer;
-        let userSelection = generalHelper.findUserSelection(exitNextPrompt);
+        let userSelection = generalHelper.findUserSelection(exitNextPrompt, false);
         
         if (userSelection === 'A') {
             console.log(important('See you soon!'));

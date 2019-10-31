@@ -1,4 +1,5 @@
 // Defines the general themes for terminal styling through the Chalk library
+/* eslint-disable indent */
 
 const chalk = require('chalk');
 
@@ -13,5 +14,5 @@ module.exports = {
     neutral,
     success,
     important,
-    major
+    major,
 };
