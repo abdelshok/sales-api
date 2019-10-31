@@ -33,10 +33,10 @@ Returns:
 - Whether the product has been added in respective data structures (boolean)
 */
 let createProductInStore = (productName, productPrice, productQuantity, hashOfProductHash, hashOfProductArray, didProductAlreadyExist) => {
+    // Set new product & price in hashProductArray
+    setProductInHashArray(productName, productPrice, productQuantity, hashOfProductArray, hashOfProductHash, didProductAlreadyExist);
     // Set new product & price in hashProductHash
     setProductInNestedHash(productName, productPrice, productQuantity, hashOfProductHash);
-    // Set new product & price in hashProductArray
-    setProductInHashArray(productName, productPrice, productQuantity, hashOfProductArray, didProductAlreadyExist);
 };
 
 
@@ -80,9 +80,11 @@ let setProductInHashArray = (productName, productPrice, productQuantity, hashOfP
     newPricePointArray = [productQuantity, productPrice];
     if (didProductAlreadyExist === true) {
     // Add or replace price point to already-existing product
+        console.log('Product already exists therefore we can run the setPrice function');
         setPriceForExistingProduct(productName, productPrice, productQuantity, hashOfProductHash, hashOfProductArray, existingPriceArray, newPricePointArray);
     } else {
         // Product didn't exist so simply create key and array pair
+        console.log("It seems like product doesn't exist")
         hashOfProductArray[productName] = [newPricePointArray]; 
     }
 }
@@ -107,8 +109,9 @@ Returns:
 - Confirmation that product has been updated correctly (boolean)
 */
 let setPriceForExistingProduct = (productName, productPrice, productQuantity, hashOfProductHash, hashOfProductArray, existingPriceArray, newPricePointArray) => {
-    let pricePointExists = findIfPriceQuantityExists(productName, productQuantity, hashOfProductHash);
-    if (pricePointExists) { // Then we simply loop through the array and replace the correct quantity w/ the updated price
+    let quantityPointExists = findIfPriceQuantityExists(productName, productQuantity, hashOfProductHash);
+    console.log(`Does quantity point ${productQuantity} for item ${productName} exist:  ${quantityPointExists}`);
+    if (quantityPointExists) { // Then we simply loop through the array and replace the correct quantity w/ the updated price
         for (let i=0; i<existingPriceArray.length; i++) {
             let currentPricePointArray = existingPriceArray[i];
             let currentQuantity = currentPricePointArray[0]

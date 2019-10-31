@@ -38,7 +38,21 @@ let boom = () => {
     );
 };
 
+/*
+Function: findAllProducts
+Finds all of the products available in the store (products are named as single characters for now)
+Parameters:
+- hashOfProducts (object): hash table with all of the product names as keys
+Returns:
+- productArray (object array)
+*/
+let findAllProducts = (hashOfProducts) => {
+    let productArray = Object.keys(hashOfProducts);
+    return productArray;
+}
+
 module.exports = {
     boom, 
     findUserSelection,
+    findAllProducts,
 }

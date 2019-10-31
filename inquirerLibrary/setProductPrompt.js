@@ -5,7 +5,7 @@
 let setProductPrompt = () => {
     const questions = [
         {
-            name: 'setProductPrompt',
+            name: 'chosenProduct',
             type: 'input',
             message: `\n You want to set prices, so here are a few rules: \n 
             1. You can change individual prices or volume prices of existing products (ie. A, B, etc).  
@@ -48,14 +48,15 @@ let setProductPrompt = () => {
     ];
 
     inquirer.prompt(questions).then((answer) => {
-        let { setProductPrompt } = answer;
-        let productExists = setProductHelper.checkIfProductExists(setProductPrompt, hashOfProductHash);
+        let { chosenProduct } = answer;
+        let productExists = setProductHelper.checkIfProductExists(chosenProduct, hashOfProductHash);
         if (productExists) {
             console.log('Product exists. You can now set the price and quantity');
         } else {
             console.log('Product created. You can now set the product price and quantity');
         }
-        setProductQuantityPricePrompt(productExists, setProductPrompt);
+        console.log('First inquirer prompt, does product exists:', productExists);
+        setProductQuantityPricePrompt(productExists, chosenProduct);
         
     })
 };
@@ -137,9 +138,10 @@ let setProductQuantityPricePrompt = (didProductAlreadyExist, productName) => {
         // console.log('Product transformed into integer', productPrice);
         // console.log('Product quantity transformed into integer', productQuantity);
         // console.log('SetProductQuantityPricePrompt over');
+        console.log('Inside 2nd inquirer function, product exists: ', didProductAlreadyExist);
         setProductHelper.createProductInStore(productName, productPrice, productQuantity, hashOfProductHash, hashOfProductArray, didProductAlreadyExist);
         console.log('New item hash', hashOfProductHash);
-        console.log('nNw item array', hashOfProductArray);
+        console.log('New item array', hashOfProductArray);
         console.log('Set product helper', setProductHelper);
         exitPrompt();
     })

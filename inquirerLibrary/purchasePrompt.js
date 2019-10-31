@@ -11,6 +11,8 @@ let purchasePrompt = () => {
     ]
     inquirer.prompt(questions).then(() => {
         console.log('Answer of purchase prompt: \n');
+        const productArray = generalHelper.findAllProducts(hashOfProductArray);
+        console.log(neutral(`Here is a list of available products ${productArray} \n`));
         inputItemsPrompt(); // Leveraging hierarchical structure provided by inquirer package
     });
 }
@@ -55,9 +57,14 @@ module.exports = {
     purchasePrompt,
 }
 
+// External Packages
 const inquirer = require('inquirer');
+// Internal Modules
 const checkoutHelper = require('../utilityLibrary/checkoutHelper');
+const generalHelper = require('../utilityLibrary/generalHelper');
 const { hashOfProductHash, hashOfProductArray } = require('../itemPrices');
 const { exitPrompt } = require('./exitPrompt');
+const { neutral } = require('../chalk');
+
 
 // TOENSURE: error logging if one of the items is not present in the store selection
