@@ -27,9 +27,9 @@ let initialPrompt = () => {
             ]
         }
     ]
-    return inquirer.prompt(questions).then((answer) => {
-        let { welcomeSelection } = answer;
-        let userSelection = generalHelper.findUserSelection(welcomeSelection);
+    inquirer.prompt(questions).then((answer) => {
+        const { welcomeSelection } = answer;
+        const userSelection = generalHelper.findUserSelection(welcomeSelection);
 
         if (userSelection === 'A') {
             purchasePrompt();

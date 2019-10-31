@@ -14,6 +14,7 @@ let itemPricesArray = {
 let itemPricesHash = {
     'A': {
         1: 2.00,
+        2: 4.00,
         4: 7.00,
     },
     'B': {

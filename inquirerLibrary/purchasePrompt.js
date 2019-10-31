@@ -50,7 +50,7 @@ let inputItemsPrompt = () => {
         }
     ];
 
-    inquirer.prompt(questions).then(async (answer) => {
+    inquirer.prompt(questions).then((answer) => {
         let { purchaseList } = answer;
         let { itemPricesHash, itemPricesArray } = prices;
         checkoutHelper.calculateTotalPrice(purchaseList, itemPricesHash, itemPricesArray);

@@ -150,7 +150,8 @@ let findIfPriceQuantityExists = (productName, productQuantity, hashOfProductHash
 
 /*
 Function: sortArray
-Makes sure to sort the array of price points per volume by quantity. In the examples below, one
+Multi-dimensional sorting
+- Makes sure to sort the array of price points per volume by quantity. In the examples below, one
 can see that it makes sure that the price point for 2 items is sorted to come before the price 
 point for 4 items
 Parameters: 

@@ -8,7 +8,9 @@ const inquirer = require('inquirer');
 const setProductHelper = require('../utilityLibrary/setProductHelper');
 const prices = require('../itemPrices');
 const { exitPrompt } = require('./exitPrompt');
-const { initialPrompt } = require('./inquirerLibrary');
+const { initialPrompt } = require('./initialPrompt');
+const { purchasePrompt } = require('./purchasePrompt');
+
 // Product Selection
 const items = require('../itemPrices');
 
@@ -153,7 +155,9 @@ let setProductQuantityPricePrompt = (didProductAlreadyExist, productName) => {
         setProductHelper.createProductInStore(productName, productPrice, productQuantity, items.itemPricesHash, items.itemPricesArray, didProductAlreadyExist);
         console.log('New item hash', items.itemPricesHash);
         console.log('new item array', items.itemPricesArray);
-        initialPrompt();
+        console.log('Purchase prompt', purchasePrompt);
+        console.log('Set product helper', setProductHelper);
+        purchasePrompt();
     })
 }
 
@@ -164,3 +168,5 @@ module.exports = {
 
 // TOENSURE: // Also make sure that when the product pricing is made it is above the lower quantity's price
 // and under the above quantity's price
+
+// TOENSURE: Add 3rd option (go back to mainmenu or purhcase more items ) in initialPrompt
