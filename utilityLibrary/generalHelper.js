@@ -1,5 +1,9 @@
 // General Helper functions used throughout the application
 
+// Internal Modules
+const { neutral } = require('../chalk');
+const figlet = require('figlet');
+
 /*
 Function: findUserSelection
 Reformats the user's choice in the 'inquirer' given list to figure out which option the user selected
@@ -23,9 +27,7 @@ No parameters, returns nothing.
 */
 let boom = () => {
     console.log(
-        chalk.yellow.bold(
-          figlet.textSync('BOOM', { horizontalLayout: 'full' })
-        )
+        neutral(figlet.textSync('BOOM', { horizontalLayout: 'full' }))
     );
 };
 

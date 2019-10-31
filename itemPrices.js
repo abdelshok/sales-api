@@ -10,7 +10,7 @@ let itemPricesArray = {
 };
 
 // Hash table created here so that if the user decides to set a new volume price, we can quickly check
-// if the price exists or not already, replace it if so, or simply create it if it doesn't exist yet
+// if the item exists or not already, replace it if so, or simply create it if it doesn't exist yet
 let itemPricesHash = {
     'A': {
         1: 2.00,

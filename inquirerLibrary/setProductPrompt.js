@@ -5,11 +5,11 @@
 // External Packages
 const inquirer = require('inquirer');
 // Internal Modules
-const setProductHelper = require('../utilityLib/setProductHelper');
+const setProductHelper = require('../utilityLibrary/setProductHelper');
 const prices = require('../itemPrices');
 const { exitPrompt } = require('./exitPrompt');
 // Product Selection
-const product = require('../itemPrices');
+const items = require('../itemPrices');
 
 
 let setProductPrompt = () => {
@@ -59,53 +59,99 @@ let setProductPrompt = () => {
 
     inquirer.prompt(questions).then((answer) => {
         let { setProductPrompt } = answer;
-        console.log('User is trying to change or create item', setProductPrompt);
-        let productExists = setProductHelper.checkIfProductExists(setProductPrompt, product.itemPricesHash);
+        let productExists = setProductHelper.checkIfProductExists(setProductPrompt, items.itemPricesHash);
         if (productExists) {
             console.log('Product exists. You can now set the price and quantity');
         } else {
             console.log('Product created. You can now set the product price and quantity');
         }
-        setProductQuantityPricePrompt(productExists);
+        setProductQuantityPricePrompt(productExists, setProductPrompt);
         
     })
 };
 
-let setProductQuantityPricePrompt = (didProductAlreadyExist) => {
+// Weakness = decimal numbers not taken care of.
+
+let setProductQuantityPricePrompt = (didProductAlreadyExist, productName) => {
     const questions = [
         {
-            name: 'askPricePrompt',
+            name: 'productPrice',
             type: 'input',
             message: `Please input the price of the current product you've selected or created: \n
-                      Enter the price: `
+                      Enter the price: `,
+            validate: (price) => {
+                price = Number(price);
+                if (!isNaN(price)) { // Number.isInteger() function does not take care of decimal number case
+                    if (price != 0) {
+                        if (price > 0) {
+                            if (price < 100000) {
+                                return true;
+                            } else {
+                                return '\n \n Price cannot be higher than $100,000.00. This a recession.'
+                            }
+                        } else {
+                            return '\n \n Price cannot be negative.';
+                        }
+                    } else {
+                        return '\n \n Price cannot be set to 0.';
+                    }
+                } else {
+                    return '\n \n Input entered is not an integer.';
+                }
+            }
         },
         {
-            name: 'askQuantityPrompt',
+            name: 'productQuantity',
             type: 'input',
             message: `\n Please input the quantity you want to set this price to \n
                       - Remember that you can set the previous price to be for an individual item or for a volume
                       - If this a newly created item, then the first quantity set needs to be equal to one. \n
                       Enter the quantity as an integer: `,
             validate: (quantity) => {
-                if (didProductAlreadyExist) {
-                    return true; // Volume can be sent for anything if product already existed
-                } // which means that indidivual price has already been set
-                else {
-                    quantity = Number(quantity); // Quantity is a string, so first convert it to an integer
-                    if (Number.isInteger(quantity)) { // Validates that the input is an integer
-                        if (quantity != 1) {
-                            return 'This product was just recently created. First set individual price of item by setting quantity to 1.';
+                quantity = Number(quantity); // Quantity entered as a string, first convert it to an integer
+                if (Number.isInteger(quantity)) { // Didn't use isNaN() because we need quantity to be an integer
+                    if (quantity != 0) { // Ensures quantity cannot be set to 0 
+                        if (quantity < 1000) {
+                            if (quantity > 0) {
+                                if (didProductAlreadyExist) {
+                                    return true;
+                                } else {
+                                    if (quantity != 1) { // Ensures that individual price is set before volume prices are set up
+                                        return '\n \n This product was recently created. Set invidual price first by setting quantity to 1.'
+                                    } else if (quantity ) {
+                                        return true;
+                                    }
+                                }
+                            } else {
+                                return '\n \n Quantity cannot be below 0';
+                            }
                         } else {
-                            return true;
+                            return '\n \n Quantity cannot be higher than 1000 items. This is not an Amazon Warehouse.';
                         }
                     } else {
-                        return 'Input entered is not an integer.'; 
+                        return '\n \n Product quantity cannot be set to 0.' 
                     }
+                } else {
+                    return '\n \n Input entered is not an integer.';
                 }
             }
         }
     ]
-    inquirer.prompt(questions);
+    inquirer.prompt(questions).then((answer) => {
+        console.log('Did product already exist', didProductAlreadyExist);
+        console.log('Product name', productName);
+        let {productPrice, productQuantity} = answer;
+        console.log('Product about to be set at price', productPrice);
+        console.log('Product about to be set at quantity', productQuantity);
+        // Transform the productPrice & productQuantity into integers here (can't stay as strings)
+        productQuantity = Number(productQuantity);
+        productPrice = Number(productPrice);
+        console.log('Product transformed into integer', productPrice);
+        console.log('Product quantity transformed into integer', productQuantity);
+        console.log('SetProductQuantityPricePrompt over');
+        setProductHelper.createProductInStore(productName, productPrice, productQuantity, items.itemPricesHash);
+        console.log('New item hash', items.itemPricesHash);
+    })
 }
 
 module.exports = {

@@ -3,7 +3,7 @@
 'use strict';
 
 const inquirer = require('inquirer');
-const checkoutHelper = require('../utilityLib/checkoutHelper');
+const checkoutHelper = require('../utilityLibrary/checkoutHelper');
 const prices = require('../itemPrices');
 const inquirerLibrary = require('./inquirerLibrary');
 const { exitPrompt } = require('./exitPrompt');

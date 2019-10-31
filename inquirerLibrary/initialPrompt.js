@@ -5,7 +5,7 @@
 // External Packages
 const inquirer = require('inquirer');
 // Internal Modules
-const generalHelper = require('../utilityLib/generalHelper');
+const generalHelper = require('../utilityLibrary/generalHelper');
 const { purchasePrompt } = require('./purchasePrompt');
 const { setProductPrompt } = require('./setProductPrompt');
 

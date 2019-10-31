@@ -4,7 +4,7 @@
 const clear = require('clear');
 const figlet = require('figlet');
 // Internal modules
-const inquirerLibrary = require('./inquirerLib/inquirerLibrary');
+const inquirerLibrary = require('./inquirerLibrary/inquirerLibrary');
 const { major } = require('./chalk');
 
 clear(); // Clears out the CL

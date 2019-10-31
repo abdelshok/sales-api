@@ -7,7 +7,7 @@ const inquirer = require('inquirer');
 const clear = require('clear');
 // Internal Modules
 const { important } = require('../chalk');
-const generalHelper = require('../utilityLib/generalHelper');
+const generalHelper = require('../utilityLibrary/generalHelper');
 const inquirerLibrary = require('./inquirerLibrary'); // TOENSURE: Why is the inquirerLibrary object empty here but full in the index.js function that we run initially
 let { initialPrompt } = require('./initialPrompt');
 
