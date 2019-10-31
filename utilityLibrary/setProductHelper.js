@@ -25,9 +25,9 @@ Parameters:
 - productName (string): ie. 'A'
 - productPrice (integer): ie. 7
 - productQuantity (integer): ie. 3 
-- hashOfProductHash (object): nested hash table with product name as keys. Look @ itemPricesHash in 
+- hashOfProductHash (object): nested hash table with product name as keys. Look @ hashOfProductHash in 
 'itemPrices.js' file
-- hashOfProductArray (object): nested hash table w/ product name as keys. Look @ itemPricesArray in 
+- hashOfProductArray (object): nested hash table w/ product name as keys. Look @ hashOfProductArray in 
 'itemPrices.js' file
 Returns:
 - Whether the product has been added in respective data structures (boolean)
@@ -47,7 +47,7 @@ Parameters:
 - productName (string)
 - productPrice (integer or floating point)
 - productQuantity (integer)
-- hashOfProductHash (object): look at itemPricesHash in '../itemPrices' file
+- hashOfProductHash (object): look at hashOfProductHash in '../itemPrices' file
 Returns:
 - Confirmation of change (boolean)
 */
@@ -134,7 +134,7 @@ a price for this quantity
 Parameters:
 - productName (string)
 - productQuantity (integer)
-- hashOfProductHash (object): look at 'itemPricesHash' object in '../itemPrices'
+- hashOfProductHash (object): look at 'hashOfProductHash' object in '../itemPrices'
 Returns:
 - Whether the quantity point exists for that specific product (boolean) 
 */

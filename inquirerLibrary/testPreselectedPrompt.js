@@ -3,10 +3,6 @@
 
 'use strict'
 
-const firstSelection = 'ABCDABAA';
-const secondSelection = 'CCCCCCC';
-const thirdSelection = 'ABCD';
-
 let testPreselectedPrompt = () => {
     const questions = [
         {
@@ -26,8 +22,7 @@ let testPreselectedPrompt = () => {
         const { preselectedProduct } = answer;
         const selectedProduct = generalHelper.findUserSelection(preselectedProduct, true); // Returns an array of type ['C', 'ABCD']
         const productString = selectedProduct[1];
-        console.log('Product string', productString);
-        checkoutHelper.calculateTotalPrice(productString, itemPricesHash, itemPricesArray);
+        checkoutHelper.calculateTotalPrice(productString, hashOfProductHash, hashOfProductArray);
         exitPrompt();
     })
 }
@@ -42,4 +37,4 @@ const inquirer = require('inquirer');
 const generalHelper = require('../utilityLibrary/generalHelper');
 const checkoutHelper = require('../utilityLibrary/checkoutHelper');
 const { exitPrompt } = require('./exitPrompt');
-const { itemPricesHash, itemPricesArray } = require('../itemPrices');
+const { hashOfProductHash, hashOfProductArray } = require('../itemPrices');

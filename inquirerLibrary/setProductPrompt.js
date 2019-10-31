@@ -49,7 +49,7 @@ let setProductPrompt = () => {
 
     inquirer.prompt(questions).then((answer) => {
         let { setProductPrompt } = answer;
-        let productExists = setProductHelper.checkIfProductExists(setProductPrompt, items.itemPricesHash);
+        let productExists = setProductHelper.checkIfProductExists(setProductPrompt, hashOfProductHash);
         if (productExists) {
             console.log('Product exists. You can now set the price and quantity');
         } else {
@@ -59,8 +59,6 @@ let setProductPrompt = () => {
         
     })
 };
-
-// Weakness = decimal numbers not taken care of.
 
 let setProductQuantityPricePrompt = (didProductAlreadyExist, productName) => {
     const questions = [
@@ -139,9 +137,9 @@ let setProductQuantityPricePrompt = (didProductAlreadyExist, productName) => {
         // console.log('Product transformed into integer', productPrice);
         // console.log('Product quantity transformed into integer', productQuantity);
         // console.log('SetProductQuantityPricePrompt over');
-        setProductHelper.createProductInStore(productName, productPrice, productQuantity, items.itemPricesHash, items.itemPricesArray, didProductAlreadyExist);
-        console.log('New item hash', items.itemPricesHash);
-        console.log('new item array', items.itemPricesArray);
+        setProductHelper.createProductInStore(productName, productPrice, productQuantity, hashOfProductHash, hashOfProductArray, didProductAlreadyExist);
+        console.log('New item hash', hashOfProductHash);
+        console.log('nNw item array', hashOfProductArray);
         console.log('Set product helper', setProductHelper);
         exitPrompt();
     })
@@ -159,9 +157,8 @@ const prices = require('../itemPrices');
 const { exitPrompt } = require('./exitPrompt');
 const { initialPrompt } = require('./initialPrompt');
 const { purchasePrompt } = require('./purchasePrompt');
-
 // Product Selection
-const items = require('../itemPrices');
+const { hashOfProductHash, hashOfProductArray } = require('../itemPrices');
 
 
 // TOENSURE: // Also make sure that when the product pricing is made it is above the lower quantity's price

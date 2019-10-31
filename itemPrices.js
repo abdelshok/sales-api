@@ -4,7 +4,7 @@
 /* eslint-disable indent */
 
 
-let itemPricesArray = {
+let hashOfProductArray = {
     'A':[[1, 2.00], [2, 4.00], [4, 7.00]], // First integer of each subarray is the quantity for that price
     'B':[[1, 12.00]], // Second integer in each subarray is the price for that quantity 
     'C':[[1, 1.25], [6, 6.00]], // Ie. In the second sub-array, 6 items can be bought for $6.00
@@ -13,7 +13,7 @@ let itemPricesArray = {
 
 // Hash table created here so that if the user decides to set a new volume price, we can quickly check
 // if the item exists or not already, replace it if so, or simply create it if it doesn't exist yet
-let itemPricesHash = {
+let hashOfProductHash = {
     'A': {
         1: 2.00,
         2: 4.00,
@@ -32,6 +32,6 @@ let itemPricesHash = {
 }
 
 module.exports = {
-    itemPricesArray,
-    itemPricesHash,
+    hashOfProductArray,
+    hashOfProductHash,
 }
