@@ -1,13 +1,6 @@
 // Initial prompt that starts the whole application
-
 'use strict';
 
-// External Packages
-const inquirer = require('inquirer');
-// Internal Modules
-const generalHelper = require('../utilityLibrary/generalHelper');
-const { purchasePrompt } = require('./purchasePrompt');
-const { setProductPrompt } = require('./setProductPrompt');
 
 let initialPrompt = () => {
     const questions = [
@@ -46,3 +39,10 @@ let initialPrompt = () => {
 module.exports = {
     initialPrompt,
 }
+
+// External Packages
+const inquirer = require('inquirer');
+// Internal Modules
+const generalHelper = require('../utilityLibrary/generalHelper');
+const { purchasePrompt } = require('./purchasePrompt');
+const { setProductPrompt } = require('./setProductPrompt');

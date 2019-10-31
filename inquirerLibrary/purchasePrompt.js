@@ -1,12 +1,5 @@
 // Prompts to go through the checkout line and purchase a series of items 
-
 'use strict';
-
-const inquirer = require('inquirer');
-const checkoutHelper = require('../utilityLibrary/checkoutHelper');
-const prices = require('../itemPrices');
-const inquirerLibrary = require('./inquirerLibrary');
-const { exitPrompt } = require('./exitPrompt');
 
 let purchasePrompt = () => {
     const questions = [
@@ -59,8 +52,12 @@ let inputItemsPrompt = () => {
 };
 
 module.exports = {
-    purchasePrompt,
-    inputItemsPrompt,
+    purchasePrompt
 }
+
+const inquirer = require('inquirer');
+const checkoutHelper = require('../utilityLibrary/checkoutHelper');
+const prices = require('../itemPrices');
+const { exitPrompt } = require('./exitPrompt');
 
 // TOENSURE: error logging if one of the items is not present in the store selection

@@ -2,19 +2,6 @@
 
 'use strict';
 
-// External Packages
-const inquirer = require('inquirer');
-// Internal Modules
-const setProductHelper = require('../utilityLibrary/setProductHelper');
-const prices = require('../itemPrices');
-const { exitPrompt } = require('./exitPrompt');
-const { initialPrompt } = require('./initialPrompt');
-const { purchasePrompt } = require('./purchasePrompt');
-
-// Product Selection
-const items = require('../itemPrices');
-
-
 let setProductPrompt = () => {
     const questions = [
         {
@@ -155,15 +142,26 @@ let setProductQuantityPricePrompt = (didProductAlreadyExist, productName) => {
         setProductHelper.createProductInStore(productName, productPrice, productQuantity, items.itemPricesHash, items.itemPricesArray, didProductAlreadyExist);
         console.log('New item hash', items.itemPricesHash);
         console.log('new item array', items.itemPricesArray);
-        console.log('Purchase prompt', purchasePrompt);
         console.log('Set product helper', setProductHelper);
-        purchasePrompt();
+        exitPrompt();
     })
 }
 
 module.exports = {
     setProductPrompt,
 }
+
+// External Packages
+const inquirer = require('inquirer');
+// Internal Modules
+const setProductHelper = require('../utilityLibrary/setProductHelper');
+const prices = require('../itemPrices');
+const { exitPrompt } = require('./exitPrompt');
+const { initialPrompt } = require('./initialPrompt');
+const { purchasePrompt } = require('./purchasePrompt');
+
+// Product Selection
+const items = require('../itemPrices');
 
 
 // TOENSURE: // Also make sure that when the product pricing is made it is above the lower quantity's price
