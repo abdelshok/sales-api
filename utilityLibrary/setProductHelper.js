@@ -59,7 +59,6 @@ let setProductInNestedHash = (productName, productPrice, productQuantity, hashOf
         hashOfProductHash[productName] = {};
         hashOfProductHash[productName][productQuantity] = productPrice
     }
-    return true;
 }
 
 /*
@@ -79,12 +78,12 @@ let setProductInHashArray = (productName, productPrice, productQuantity, hashOfP
     existingPriceArray = hashOfProductArray[productName];
     newPricePointArray = [productQuantity, productPrice];
     if (didProductAlreadyExist === true) {
-    // Add or replace price point to already-existing product
+        // Add or replace price point to already-existing product
         console.log('Product already exists therefore we can run the setPrice function');
         setPriceForExistingProduct(productName, productPrice, productQuantity, hashOfProductHash, hashOfProductArray, existingPriceArray, newPricePointArray);
     } else {
         // Product didn't exist so simply create key and array pair
-        console.log("It seems like product doesn't exist")
+        console.log("It seems like product doesn't exist");
         hashOfProductArray[productName] = [newPricePointArray]; 
     }
 }
@@ -120,11 +119,9 @@ let setPriceForExistingProduct = (productName, productPrice, productQuantity, ha
             }
         }
         sortArray(existingPriceArray); // Sorts subarray by quantity volume to ensure that price points show up in an increasing order of quantity
-        return true; 
     } else {
         existingPriceArray.push(newPricePointArray); // Quantity point doesn't exist for this product so we simply push it into the array
         sortArray(existingPriceArray); // and sort it to have them show in increasing order of quantity
-        return true;
     }
 }
 

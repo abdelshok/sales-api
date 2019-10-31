@@ -47,8 +47,9 @@ let inputItemsPrompt = () => {
     ];
 
     inquirer.prompt(questions).then((answer) => {
-        let { purchaseList } = answer;
-        checkoutHelper.calculateTotalPrice(purchaseList, hashOfProductHash, hashOfProductArray);
+        const { purchaseList } = answer;
+        const totalString = checkoutHelper.calculateTotalPrice(purchaseList, hashOfProductHash, hashOfProductArray);
+        console.log(success(`\n Total of purchased items is $ ${totalString} \n`));
         exitPrompt();
     })
 };
@@ -64,7 +65,7 @@ const checkoutHelper = require('../utilityLibrary/checkoutHelper');
 const generalHelper = require('../utilityLibrary/generalHelper');
 const { hashOfProductHash, hashOfProductArray } = require('../itemPrices');
 const { exitPrompt } = require('./exitPrompt');
-const { neutral } = require('../chalk');
+const { neutral, success } = require('../chalk');
 
 
 // TOENSURE: error logging if one of the items is not present in the store selection

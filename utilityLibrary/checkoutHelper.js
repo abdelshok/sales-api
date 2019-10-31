@@ -1,7 +1,7 @@
 // Helper functions for checkout-related feature
 
 // Internal Modules
-const { error, success } = require('../chalk');
+const { error } = require('../chalk');
 
 /*
 Function: calculateTotalPrice
@@ -41,8 +41,7 @@ let calculateTotalPrice = (itemList, hashPrices, arrayPrices) => {
             };
         };
         let totalString = reformatPrice(total);
-        console.log(success(`\n Total of purchased items is $ ${totalString} \n`));
-        return total;
+        return totalString;
     } catch(error) {
         console.log('Calculate total price function encountered error.')
     }
