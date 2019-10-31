@@ -8,6 +8,7 @@ const inquirer = require('inquirer');
 const setProductHelper = require('../utilityLibrary/setProductHelper');
 const prices = require('../itemPrices');
 const { exitPrompt } = require('./exitPrompt');
+const { initialPrompt } = require('./inquirerLibrary');
 // Product Selection
 const items = require('../itemPrices');
 
@@ -138,22 +139,28 @@ let setProductQuantityPricePrompt = (didProductAlreadyExist, productName) => {
         }
     ]
     inquirer.prompt(questions).then((answer) => {
-        console.log('Did product already exist', didProductAlreadyExist);
-        console.log('Product name', productName);
+        // console.log('Did product already exist', didProductAlreadyExist);
+        // console.log('Product name', productName);
         let {productPrice, productQuantity} = answer;
-        console.log('Product about to be set at price', productPrice);
-        console.log('Product about to be set at quantity', productQuantity);
+        // console.log('Product about to be set at price', productPrice);
+        // console.log('Product about to be set at quantity', productQuantity);
         // Transform the productPrice & productQuantity into integers here (can't stay as strings)
         productQuantity = Number(productQuantity);
-        productPrice = Number(productPrice);
-        console.log('Product transformed into integer', productPrice);
-        console.log('Product quantity transformed into integer', productQuantity);
-        console.log('SetProductQuantityPricePrompt over');
-        setProductHelper.createProductInStore(productName, productPrice, productQuantity, items.itemPricesHash);
+        productPrice = Number(Number(productPrice).toFixed(2)); // Rounding to the nearest 100th, wrapped in Number() again because .toFixed() returns a string
+        // console.log('Product transformed into integer', productPrice);
+        // console.log('Product quantity transformed into integer', productQuantity);
+        // console.log('SetProductQuantityPricePrompt over');
+        setProductHelper.createProductInStore(productName, productPrice, productQuantity, items.itemPricesHash, items.itemPricesArray, didProductAlreadyExist);
         console.log('New item hash', items.itemPricesHash);
+        console.log('new item array', items.itemPricesArray);
+        initialPrompt();
     })
 }
 
 module.exports = {
     setProductPrompt,
 }
+
+
+// TOENSURE: // Also make sure that when the product pricing is made it is above the lower quantity's price
+// and under the above quantity's price

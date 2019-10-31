@@ -32,10 +32,8 @@ let initialPrompt = () => {
         let userSelection = generalHelper.findUserSelection(welcomeSelection);
 
         if (userSelection === 'A') {
-            // TODELETE: console.log('User selected option A \n');
             purchasePrompt();
         } else if (userSelection === 'B') {
-            // TODELETE: console.log('User selected option B \n');
             setProductPrompt();
         } else if (userSelection === 'C') {
             console.log('User selected option C \n');
