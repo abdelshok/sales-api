@@ -18,7 +18,7 @@ Returns:
 let findUserSelection = (string, returnAll) => {
     const selectedOptionArray = string.split('.'); // Every selection of each list is going to start with an alphabetic character followed by a "."
     if (selectedOptionArray.length > 1) { // If array size is equal to 0 or 1, then it means that the string doesn't have a full stop which prevents us from finding user selection (the capital letter before the full stop)
-        if (returnAll == true) { 
+        if (returnAll == true) {
             selectedOptionArray[1] = selectedOptionArray[1].trim(); // Shaves off the unecessary white space at the beginning
             return selectedOptionArray;
         } else {
@@ -27,7 +27,7 @@ let findUserSelection = (string, returnAll) => {
             return selectedCharacter;
         }
     } else {
-        return ''; 
+        return '';
     }
 };
 
@@ -40,10 +40,10 @@ Parameters:
 Returns:
 - productListString (string) 
 */
-let formatProductPrices = (hashOfProductArray)  => {
-    const productsAvailableArray = Object.keys(hashOfProductArray).sort(); 
+let formatProductPrices = (hashOfProductArray) => {
+    const productsAvailableArray = Object.keys(hashOfProductArray).sort();
     let finalString = '';
-    for (let i=0; i<productsAvailableArray.length; i++) {
+    for (let i = 0; i < productsAvailableArray.length; i++) {
         let productName = productsAvailableArray[i];
         let pricePointsArray = hashOfProductArray[productName];
         let pricePointStrings = stringifyQuantityPrice(pricePointsArray);
@@ -60,36 +60,36 @@ Parameters:
 - priceQuantityArray (obect array)
 - lastElement (boolean): determines whether the element passed is the last, so that we can add a newline at the end
 Returns:
-- finalPriceString (string)
+- finalPricePointString (string)
 */
 let stringifyQuantityPrice = (pricePointsArray) => {
-    let finalPriceString = '';
-    for (let i=0; i<pricePointsArray.length; i++) {
+    let finalPricePointString = '';
+    for (let i = 0; i < pricePointsArray.length; i++) {
         const currentPricePointArray = pricePointsArray[i];
         const quantity = currentPricePointArray[0];
         const price = currentPricePointArray[1];
         const quantityString = quantity.toString();
         const priceString = reformatPrice(price);
-        let lastElement = i == pricePointsArray.length-1 ? true : false; // If we're at the last index of array, set to true
+        let lastElement = i == pricePointsArray.length - 1 ? true : false; // If we're at the last index of array, set to true
         if (lastElement == false) {
-            const priceSubString = quantityString + ' for $' + priceString + ', '; 
-            finalPriceString += priceSubString;
+            const priceSubString = quantityString + ' for $' + priceString + ', ';
+            finalPricePointString += priceSubString;
         } else {
-            const priceSubString = quantityString + ' for $' + priceString + '\n'; 
-            finalPriceString += priceSubString;
+            const priceSubString = quantityString + ' for $' + priceString + '\n';
+            finalPricePointString += priceSubString;
         }
     }
-    return finalPriceString;
+    return finalPricePointString;
 }
 
 /*
 Function: boom
 Types out 'BOOM' on the terminal. Created to test out styling and CLI exiting.
-No parameters, returns nothing.
+No parameters, returns nothing, just boom.
 */
 let boom = () => {
     console.log(
-        neutral(figlet.textSync('BOOM', { horizontalLayout: 'full' }))
+        neutral(figlet.textSync('JUST BOOM', { horizontalLayout: 'full' }))
     );
 };
 
@@ -107,8 +107,9 @@ let findAllProducts = (hashOfProducts) => {
 }
 
 module.exports = {
-    boom, 
+    boom,
     findUserSelection,
     findAllProducts,
     formatProductPrices,
+    stringifyQuantityPrice
 }
