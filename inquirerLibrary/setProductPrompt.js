@@ -138,7 +138,7 @@ let setProductQuantityPricePrompt = (didProductAlreadyExist, productName) => {
         // console.log('Product transformed into integer', productPrice);
         // console.log('Product quantity transformed into integer', productQuantity);
         // console.log('SetProductQuantityPricePrompt over');
-        console.log('Inside 2nd inquirer function, product exists: ', didProductAlreadyExist);
+        // console.log('Inside 2nd inquirer function, product exists: ', didProductAlreadyExist);
         setProductHelper.createProductInStore(productName, productPrice, productQuantity, hashOfProductHash, hashOfProductArray, didProductAlreadyExist);
         // console.log('New item hash', hashOfProductHash);
         // console.log('New item array', hashOfProductArray);

@@ -20,9 +20,10 @@ let testPreselectedPrompt = () => {
     ]
     inquirer.prompt(questions).then((answer) => {
         const { preselectedProduct } = answer;
-        const selectedProduct = generalHelper.findUserSelection(preselectedProduct, true); // Returns an array of type ['C', 'ABCD']
+        const selectedProduct = findUserSelection(preselectedProduct, true); // Returns an array of type ['C', 'ABCD']
         const productString = selectedProduct[1];
-        checkoutHelper.calculateTotalPrice(productString, hashOfProductHash, hashOfProductArray);
+        const totalPriceString = calculateTotalPrice(productString, hashOfProductHash, hashOfProductArray);
+        console.log(success(`\n Total of purchased items is $ ${totalPriceString} \n`));
         exitPrompt();
     })
 }
@@ -34,7 +35,8 @@ module.exports = {
 // External Packages
 const inquirer = require('inquirer');
 // Internal Modules
-const generalHelper = require('../utilityLibrary/generalHelper');
-const checkoutHelper = require('../utilityLibrary/checkoutHelper');
+const { findUserSelection } = require('../utilityLibrary/generalHelper');
+const { calculateTotalPrice } = require('../utilityLibrary/checkoutHelper');
 const { exitPrompt } = require('./exitPrompt');
 const { hashOfProductHash, hashOfProductArray } = require('../itemPrices');
+const { success } = require('../chalk');

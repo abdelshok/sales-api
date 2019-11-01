@@ -7,7 +7,7 @@ let initialPrompt = () => {
     const questions = [
         {
             name: 'welcomeUserPrompt',
-            message: "Welcome to Jupiter's one and only 7/11. \n \n We sell As, Bs, Cs, and Ds galore. \n \n Please check out our prices below. Please press enter. \n"
+            message: "Welcome to Jupiter's one and only 7/11. 🌖 \n \n We sell As, Bs, Cs, Ds, and other letters of the alphabet galore. \n \n Please check out our prices below. Please press enter. \n"
         }
     ]
     inquirer.prompt(questions).then((answer) => {
@@ -24,7 +24,7 @@ let userOptionsPrompt = () => {
             type: 'list',
             message: 'What would you like to do?',
             choices: [
-                'A. Buy a selection of A, B, C, and Ds',
+                'A. Buy a selection of items',
                 'B. Change product pricing, you are god.',
                 'C. Test the price accuracy of our advanced software by choosing one of three preselected item lists.',
                 'D. Test Boom'

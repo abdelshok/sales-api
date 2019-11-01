@@ -49,8 +49,8 @@ let inputItemsPrompt = () => {
 
     inquirer.prompt(questions).then((answer) => {
         const { purchaseList } = answer;
-        const totalString = checkoutHelper.calculateTotalPrice(purchaseList, hashOfProductHash, hashOfProductArray);
-        console.log(success(`\n Total of purchased items is $ ${totalString} \n`));
+        const totalPriceString = checkoutHelper.calculateTotalPrice(purchaseList, hashOfProductHash, hashOfProductArray);
+        console.log(success(`\n Total of purchased items is $ ${totalPriceString} \n`));
         exitPrompt();
     })
 };
