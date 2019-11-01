@@ -30,7 +30,7 @@ let setProductPrompt = () => {
                 } else if (length > 1) {
                     return 'Input too long. Please enter a valid one character string';
                 } else {
-                    if (/[a-z]/i.test(newItemString)) {
+                    if (/[a-z]/i.test(newItemString)) { // Using regex
                         return true; 
                     } else {
                         return 'Input is not a character from the alphabet';
