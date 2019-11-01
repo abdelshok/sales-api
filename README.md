@@ -36,7 +36,13 @@ After these four steps, you should be able to simply play around with this proje
 
 ## Testing 
 
-Testing hasn't been implemented yet for this project, but should be done so through npm test most likely.
+Testing for this application was implemented using the JS framework named Jest for a multitude of reasons, the most important being it's ease of use and quick start time. 
+
+42 tests were set up for this project.
+
+In order to run all tests, run `npm run test` in the terminal of the main project directory (where you also ran `npm install`).
+
+This will run all tests and all should pass. I might add some more later, although for the size of this application, I feel like these should be enough.
 
 ## Local Development
 

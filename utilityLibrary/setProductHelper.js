@@ -164,9 +164,12 @@ let sortArray = (array) => {
     {
         return a[0] - b[0];
     });
+    return array;
 }
 
 module.exports = {
     checkIfProductExists,
     createProductInStore,
+    sortArray, 
+    findIfPriceQuantityExists,
 }
