@@ -44,6 +44,17 @@ In order to run all tests, run `npm run test` in the terminal of the main projec
 
 This will run all tests and all should pass. I might add some more later, although for the size of this application, I feel like these should be enough.
 
+**Important**
+
+If you want to log all test descriptions in the terminal and have a detailed look at which tests are being passed, what their input is, and what their output is supposed to be then run:
+
+```bash
+
+npm test -- --verbose
+
+```
+
+
 ## Local Development
 
 This app ids only made of one npm package, there is therefore only one place to run the `npm` command.
