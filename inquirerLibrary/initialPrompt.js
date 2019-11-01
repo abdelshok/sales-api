@@ -25,8 +25,8 @@ let userOptionsPrompt = () => {
             message: 'What would you like to do?',
             choices: [
                 'A. Buy a selection of items',
-                'B. Change product pricing, you are god.',
-                'C. Test the price accuracy of our advanced software by choosing one of three preselected item lists.',
+                'B. Create products or update existing product pricing',
+                'C. Test the price accuracy of our advanced software by choosing one of our preselected item lists',
                 'D. Test Boom'
             ]
         }

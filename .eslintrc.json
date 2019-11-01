@@ -16,6 +16,11 @@
     },
     "rules": {
         "no-unused-vars": "warn",
+        "no-console": "off",
+        "comma-dangle": "off",
+        "react/jsx-filename-extension": "off",
         "indent": "off",
+        "react/jsx-indent": "off",
+        "react/jsx-indent-props": "off"
     }
 }

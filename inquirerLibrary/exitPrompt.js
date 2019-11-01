@@ -12,9 +12,9 @@ let exitPrompt = () => {
             type: 'list',
             message: 'What would you like to do next?',
             choices: [
-                'A. Exit the store',
-                'B. Purchase products',
-                'C. Go back to Main Menu'
+                'A. Purchase products', 
+                'B. Go back to Main Menu',
+                'C. Exit the store'
             ]
         }
     ]
@@ -23,14 +23,14 @@ let exitPrompt = () => {
         let userSelection = generalHelper.findUserSelection(exitNextPrompt, false);
         
         if (userSelection === 'A') {
-            console.log(important('See you soon!'));
-            return 'Bye';
-        } else if (userSelection === 'B') {
             clear();
             purchasePrompt();
-        } else if (userSelection === 'C') {
+        } else if (userSelection === 'B') {
             clear();
             initialPrompt();
+        } else if (userSelection === 'C') {
+            console.log(important('See you soon!'));
+            return 'Bye';
         }
     });
 }
