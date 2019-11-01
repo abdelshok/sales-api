@@ -38,12 +38,10 @@ Returns:
 */
 let formatProductPrices = (hashOfProductArray)  => {
     const productsAvailableArray = Object.keys(hashOfProductArray).sort(); 
-    // console.log(`Products available array: ${productsAvailableArray}`);
     let finalString = '';
     for (let i=0; i<productsAvailableArray.length; i++) {
         let productName = productsAvailableArray[i];
         let pricePointsArray = hashOfProductArray[productName];
-        // console.log(`Price points array: ${pricePointsArray}`);
         let pricePointStrings = stringifyQuantityPrice(pricePointsArray);
         finalString += productName + ': ' + pricePointStrings;
     }
@@ -53,10 +51,10 @@ let formatProductPrices = (hashOfProductArray)  => {
 
 /*
 Function: stringifyQuantityPrice
-Takes a quantity/price point and turns into a string "X for $Y"
+Takes an array with an item's array of quantity/price points and turns into a string "1 for $2.00, 2 for $3.00", etc.
 Parameters:
 - priceQuantityArray (obect array)
-- lastElement (boolean): determines whether the element passed is the last, so we add a newline at the end
+- lastElement (boolean): determines whether the element passed is the last, so that we can add a newline at the end
 Returns:
 - finalPriceString (string)
 */

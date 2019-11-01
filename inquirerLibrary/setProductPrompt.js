@@ -140,9 +140,8 @@ let setProductQuantityPricePrompt = (didProductAlreadyExist, productName) => {
         // console.log('SetProductQuantityPricePrompt over');
         console.log('Inside 2nd inquirer function, product exists: ', didProductAlreadyExist);
         setProductHelper.createProductInStore(productName, productPrice, productQuantity, hashOfProductHash, hashOfProductArray, didProductAlreadyExist);
-        console.log('New item hash', hashOfProductHash);
-        console.log('New item array', hashOfProductArray);
-        console.log('Set product helper', setProductHelper);
+        // console.log('New item hash', hashOfProductHash);
+        // console.log('New item array', hashOfProductArray);
         exitPrompt();
     })
 }
