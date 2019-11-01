@@ -107,4 +107,5 @@ let reformatPrice = (price) => {
 module.exports = {
     calculateTotalPrice,
     reformatPrice,
+    hashString,
 }

@@ -1,13 +1,13 @@
 {
   "name": "sales-api",
   "version": "1.0.0",
-  "description": "API created that mocks an intergalactic checkout line at Jupiter's 7/11",
+  "description": "API created that mocks the intergalactic checkout line at Jupiter's 7/11",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "Abdel Shokair",
@@ -24,6 +24,7 @@
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "jest": "^24.9.0",
     "mocha": "^6.2.2",
     "prettier": "1.18.2"
   }
