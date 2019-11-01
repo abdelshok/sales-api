@@ -34,8 +34,12 @@ let inputItemsPrompt = () => {
                 if (length ==  0) {
                     return 'Please enter a valid string';
                 } else {
-                    return true; // validate() function needs to return a *boolean* value if true or it will not pass the answer
-                } // to the next prompt 
+                   if (/[a-z]/i.test(itemList)) {
+                        return true; // validate() function needs to return a *boolean* value if true or it will not pass the answer
+                    } else {
+                        return 'Please enter one or more alphabetic characters.';
+                    }
+                } 
             },
             filter: function(value) { // Ensures the string is always capitalized by transforming it
                 if (value.length > 0) {
@@ -67,6 +71,3 @@ const { findAllProducts, formatProductPrices } = require('../utilityLibrary/gene
 const { hashOfProductHash, hashOfProductArray } = require('../itemPrices');
 const { exitPrompt } = require('./exitPrompt');
 const { neutral, success } = require('../chalk');
-
-
-// TOENSURE: error logging if one of the items is not present in the store selection
