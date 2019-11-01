@@ -16,6 +16,13 @@ It is important to note that this project launches a command-line interface (or 
   1. **Node server**: [`./package.json`](package.json)
       * Add more comments here
 
+### How it's done?
+
+Mainly through the use of Inquirer.js, which provides a collection of common interactive command-line user interfaces. Chalk was also used to add a little splash of color, so thank you to all the developers that created and maintained
+these packages.
+
+**Important**: This is not a website but a command line interface. The "User Interface" is therefore on the terminal, not on your browser.
+
 ## Demo
 
 In order to run the application, simply:

@@ -154,15 +154,6 @@ module.exports = {
 const inquirer = require('inquirer');
 // Internal Modules
 const setProductHelper = require('../utilityLibrary/setProductHelper');
-const prices = require('../itemPrices');
 const { exitPrompt } = require('./exitPrompt');
-const { initialPrompt } = require('./initialPrompt');
-const { purchasePrompt } = require('./purchasePrompt');
 // Product Selection
 const { hashOfProductHash, hashOfProductArray } = require('../itemPrices');
-
-
-// TOENSURE: // Also make sure that when the product pricing is made it is above the lower quantity's price
-// and under the above quantity's price
-
-// TOENSURE: Add 3rd option (go back to mainmenu or purhcase more items ) in initialPrompt
