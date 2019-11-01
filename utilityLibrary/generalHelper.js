@@ -3,6 +3,7 @@
 // Internal Modules
 const { neutral } = require('../chalk');
 const figlet = require('figlet');
+const { reformatPrice } = require('./checkoutHelper');
 
 /*
 Function: findUserSelection
@@ -26,6 +27,58 @@ let findUserSelection = (string, returnAll) => {
     }
 };
 
+
+/*
+Function: formatProductPrices
+Retrieves all of the products and their prices and formats it so that the user/client can see them 
+Parameters:
+- hashOfProductArray (object): with product name as the key and value a multi-dimensional array containing quantity/price pairs
+Returns:
+- productListString (string) 
+*/
+let formatProductPrices = (hashOfProductArray)  => {
+    const productsAvailableArray = Object.keys(hashOfProductArray).sort(); 
+    // console.log(`Products available array: ${productsAvailableArray}`);
+    let finalString = '';
+    for (let i=0; i<productsAvailableArray.length; i++) {
+        let productName = productsAvailableArray[i];
+        let pricePointsArray = hashOfProductArray[productName];
+        // console.log(`Price points array: ${pricePointsArray}`);
+        let pricePointStrings = stringifyQuantityPrice(pricePointsArray);
+        finalString += productName + ': ' + pricePointStrings;
+    }
+    return finalString;
+}
+
+
+/*
+Function: stringifyQuantityPrice
+Takes a quantity/price point and turns into a string "X for $Y"
+Parameters:
+- priceQuantityArray (obect array)
+- lastElement (boolean): determines whether the element passed is the last, so we add a newline at the end
+Returns:
+- finalPriceString (string)
+*/
+let stringifyQuantityPrice = (pricePointsArray) => {
+    let finalPriceString = '';
+    for (let i=0; i<pricePointsArray.length; i++) {
+        const currentPricePointArray = pricePointsArray[i];
+        const quantity = currentPricePointArray[0];
+        const price = currentPricePointArray[1];
+        const quantityString = quantity.toString();
+        const priceString = reformatPrice(price);
+        let lastElement = i == pricePointsArray.length-1 ? true : false; // If we're at the last index of array, set to true
+        if (lastElement == false) {
+            const priceSubString = quantityString + ' for $' + priceString + ', '; 
+            finalPriceString += priceSubString;
+        } else {
+            const priceSubString = quantityString + ' for $' + priceString + '\n'; 
+            finalPriceString += priceSubString;
+        }
+    }
+    return finalPriceString;
+}
 
 /*
 Function: boom
@@ -55,4 +108,5 @@ module.exports = {
     boom, 
     findUserSelection,
     findAllProducts,
+    formatProductPrices,
 }

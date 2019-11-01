@@ -106,4 +106,5 @@ let reformatPrice = (price) => {
 
 module.exports = {
     calculateTotalPrice,
+    reformatPrice,
 }
