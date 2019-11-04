@@ -8,20 +8,20 @@ let setProductPrompt = () => {
             name: 'chosenProduct',
             type: 'input',
             message: `\n You want to set prices, so here are a few rules: \n 
-            1. You can change individual prices or volume prices of existing products (ie. A, B, etc).  
-            2. You can also create new products by typing a new product name in the input that is going to follow.
+            1. You can change individual prices or volume prices of already existing products (ie. A, B, C, D are the standard ones).  
+            2. You can also create new products by typing a new product name in the input that is going to follow. ('Z', 'X', 'W')
             3. The new product that you create needs to be a single alphabetic character. Yes this means, that there is a maximum of 26 products.
-            4. After you choose a new product, whether it is a newly invented one or an already existing one, the commmand line is going to ask you
-            to choose the price first, and then the quantity. 
+            4. After you choose a new product, whether it is a newly invented one or an already existing one, the commmand line is going to ask you to choose the price first, and then the quantity. 
             5. The first price of a newly created product needs to always be set for an individual item (quantity=1). A product cannot be created by
-            directly setting a volume quantity. 
-            Ie. If you want to create a product 'Z', the CLI will first ask you the name of the product. Input 'Z'. It will then ask for the price of
+            directly setting a volume quantity. Ie. If you create product 'X', then you have to set the invidual price of 'X' before you set any volume price.
+            
+            Steps: If you want to create a product 'Z', the CLI will first ask you the name of the product. Input 'Z'. It will then ask for the price of
             'Z'. Let's assume that it's set to 100. After that the CLI will ask for the quantity. The first quantity entry needs to be 1, meanining that
             one unit of 'Z' will cost $100. Any unit other than 1 will return an error. \n
             • If you want to reset the product list, exit the program and re-start it.
 
             Act accordingly.
-            \n Enter new product name (single character): `,
+            \n Enter name of existing product or new product name (single character): `,
             validate: (newItemString) => { // Validates that a string is actually entered, returns an error message if nothing is entered
                 newItemString = newItemString.toString()
                 let length = newItemString.length;
@@ -55,7 +55,7 @@ let setProductPrompt = () => {
         } else {
             console.log('Product created. You can now set the product price and quantity');
         }
-        console.log('First inquirer prompt, does product exists:', productExists);
+        // console.log('First inquirer prompt, does product exists:', productExists);
         setProductQuantityPricePrompt(productExists, chosenProduct);
         
     })
@@ -125,20 +125,13 @@ let setProductQuantityPricePrompt = (didProductAlreadyExist, productName) => {
                 }
             }
         }
-    ]
+    ];
+
     inquirer.prompt(questions).then((answer) => {
-        // console.log('Did product already exist', didProductAlreadyExist);
-        // console.log('Product name', productName);
-        let {productPrice, productQuantity} = answer;
-        // console.log('Product about to be set at price', productPrice);
-        // console.log('Product about to be set at quantity', productQuantity);
+        let { productPrice, productQuantity } = answer;
         // Transform the productPrice & productQuantity into integers here (can't stay as strings)
         productQuantity = Number(productQuantity);
         productPrice = Number(Number(productPrice).toFixed(2)); // Rounding to the nearest 100th, wrapped in Number() again because .toFixed() returns a string
-        // console.log('Product transformed into integer', productPrice);
-        // console.log('Product quantity transformed into integer', productQuantity);
-        // console.log('SetProductQuantityPricePrompt over');
-        // console.log('Inside 2nd inquirer function, product exists: ', didProductAlreadyExist);
         setProductHelper.createProductInStore(productName, productPrice, productQuantity, hashOfProductHash, hashOfProductArray, didProductAlreadyExist);
         // console.log('New item hash', hashOfProductHash);
         // console.log('New item array', hashOfProductArray);
@@ -148,7 +141,7 @@ let setProductQuantityPricePrompt = (didProductAlreadyExist, productName) => {
 
 module.exports = {
     setProductPrompt,
-}
+};
 
 // External Packages
 const inquirer = require('inquirer');

@@ -1,4 +1,4 @@
-// Prompts to go through the checkout line and purchase a series of items 
+// Prompts to go through the checkout line and purchase a series of items
 
 'use strict';
 
@@ -26,7 +26,6 @@ let inputItemsPrompt = () => {
             message: `Please enter a list of your purchased items as a string composed of only A, B, C, and D characters. \n 
             -Ie. If you only purchase one item A and two items B, then enter: ABB, BAB, etc.  
             -The ordering of the items does not matter, lowercase or uppercase does not matter.
-            -At any time, you can come back to the main menu by typing "menu" 
             -Please enter one item at minimum, there is no limit to the amount of items you can purchase, we fortunately have an infinite supply. 
             \n Enter: `,
             validate: (itemList) => { // Validates that a string is actually entered, returns an error message if nothing is entered
@@ -34,7 +33,7 @@ let inputItemsPrompt = () => {
                 if (length ==  0) {
                     return 'Please enter a valid string';
                 } else {
-                   if (/[a-z]/i.test(itemList)) {
+                   if (/[a-z]/i.test(itemList)) { // Using regex 
                         return true; // validate() function needs to return a *boolean* value if true or it will not pass the answer
                     } else {
                         return 'Please enter one or more alphabetic characters.';
@@ -53,7 +52,7 @@ let inputItemsPrompt = () => {
 
     inquirer.prompt(questions).then((answer) => {
         const { purchaseList } = answer;
-        const totalPriceString = checkoutHelper.calculateTotalPrice(purchaseList, hashOfProductHash, hashOfProductArray);
+        const totalPriceString = calculateTotalPrice(purchaseList, hashOfProductHash, hashOfProductArray);
         console.log(success(`\n Total of purchased items is $ ${totalPriceString} \n`));
         exitPrompt();
     })
@@ -66,7 +65,7 @@ module.exports = {
 // External Packages
 const inquirer = require('inquirer');
 // Internal Modules
-const checkoutHelper = require('../utilityLibrary/checkoutHelper');
+const { calculateTotalPrice } = require('../utilityLibrary/checkoutHelper');
 const { findAllProducts, formatProductPrices } = require('../utilityLibrary/generalHelper');
 const { hashOfProductHash, hashOfProductArray } = require('../itemPrices');
 const { exitPrompt } = require('./exitPrompt');

@@ -1,4 +1,4 @@
-// Initial prompt that starts the whole application
+// Initial prompt that starts the whole application and directs the user options
 
 'use strict';
 
@@ -33,7 +33,7 @@ let userOptionsPrompt = () => {
     ]
     inquirer.prompt(questions).then((answer) => {
         const { initialUserSelection } = answer;
-        const userSelection = generalHelper.findUserSelection(initialUserSelection, false);
+        const userSelection = findUserSelection(initialUserSelection, false);
 
         if (userSelection === 'A') {
             purchasePrompt();
@@ -42,7 +42,7 @@ let userOptionsPrompt = () => {
         } else if (userSelection === 'C') {
             testPreselectedPrompt();
         } else if (userSelection === 'D') {
-            generalHelper.boom()
+            boom();
         }
     })
 }
@@ -53,11 +53,11 @@ module.exports = {
 // External Packages
 const inquirer = require('inquirer');
 // Internal Modules
-const generalHelper = require('../utilityLibrary/generalHelper');
+const { findUserSelection, boom } = require('../utilityLibrary/generalHelper');
 const { purchasePrompt } = require('./purchasePrompt');
 const { setProductPrompt } = require('./setProductPrompt');
 const { testPreselectedPrompt } = require('./testPreselectedPrompt');
 const { formatProductPrices } = require('../utilityLibrary/generalHelper');
 const { neutral } = require('../chalk');
 // Prices
-const { hashOfProductHash, hashOfProductArray } = require('../itemPrices');
+const { hashOfProductArray } = require('../itemPrices');

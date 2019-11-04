@@ -9,17 +9,15 @@ A minimal example of using a Node backend to create a **command line interface**
 
 ## Design Points
 
-This project does not have a web or mobile front-end, only a back-end. It is the product of **one** npm project. There is therefore only one `package.json` and therefore only one place to run npm commands --> in the root directory.
+This project does not have a web or mobile front-end, "only" a back-end. It is the product of **one** npm project. There is therefore only one `package.json` and therefore only one place to run npm commands --> in the root directory.
 
 It is important to note that this project launches a command-line interface (or CLI) that the user will be interacting with, in order to purchase products from the store, create new products, set new prices, etc.
 
   1. **Node server**: [`./package.json`](package.json)
-      * Add more comments here
 
 ### How it's done?
 
-Mainly through the use of Inquirer.js, which provides a collection of common interactive command-line user interfaces. Chalk was also used to add a little splash of color, so thank you to all the developers that created and maintained
-these packages.
+Mainly through the use of Inquirer.js, which provides a collection of common interactive command-line user interfaces. Chalk was also used to add a little splash of color, so thank you to all the developers that created and maintained these packages.
 
 **Important**: This is not a website but a command line interface. The "User Interface" is therefore on the terminal, not on your browser.
 
@@ -42,7 +40,7 @@ Testing for this application was implemented using the JS framework named Jest f
 
 In order to run all tests, run `npm run test` in the terminal of the main project directory (where you also ran `npm install`).
 
-This will run all tests and all should pass. I might add some more later, although for the size of this application, I feel like these should be enough.
+This will run all tests and all should pass. 
 
 **Important**
 

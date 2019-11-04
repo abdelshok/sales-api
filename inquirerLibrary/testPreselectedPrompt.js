@@ -30,7 +30,7 @@ let testPreselectedPrompt = () => {
 
 module.exports = {
     testPreselectedPrompt,
-}
+};
 
 // External Packages
 const inquirer = require('inquirer');

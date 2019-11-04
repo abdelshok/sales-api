@@ -157,7 +157,7 @@ point for 4 items
 Parameters: 
 - array (array object). ie. [[1, 1.50], [4, 4], [2, 2.50]]
 Returns:
-- Nothing (boolean?). ie. [[1, 1.50], [2, 2.50], [4, 4]]
+- array. ie. [[1, 1.50], [2, 2.50], [4, 4]]
 */
 let sortArray = (array) => {
     array.sort(function(a, b)

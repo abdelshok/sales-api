@@ -34,8 +34,8 @@ let calculateTotalPrice = (itemList, hashPrices, arrayPrices) => {
                         purchasedQuantity = purchasedQuantity%currentVolume; // We update the purchasedQuantity to the remaining items that couldn't
                         // be counted towards the current volume price
                     }
-                    i--; // Will run into problems potentially if i keeps decrementing but the purchased quantity never reaches 0 -- we'd reach an index
-                } // array out of range situation 
+                    i--; // Will run into problems potentially if i keeps decrementing but the purchased quantity always reaches 0 -- we'd reach an index
+                } // array out of range situation if it didn't
             } else {
                 console.log(error(`Item ${currentItem} not present in the shop.`)); // Logging to show which of the items that were added are not present in store
             };
@@ -47,9 +47,8 @@ let calculateTotalPrice = (itemList, hashPrices, arrayPrices) => {
     }
 }
 
-// TOENSURE: when adding, creating item prices for items, if you are going to add a volume price to an item, we need to make sure that there is an individual
+// When adding, creating item prices for items, if you are going to add a volume price to an item, we need to make sure that there is an individual
 // price already, because we'd run into a lot of problems if there's not (infinite loop situation)
-
 
 /*
 Function: hashString
@@ -82,7 +81,6 @@ Returns:
 */
 let reformatPrice = (price) => {
     let priceArray = price.toString().split('.');
-    // TODELETE: console.log(`Price array ${priceArray} \n`);
     let finalPrice = '';
     if (priceArray.length === 1) { // If price is an integer. Ie. 6
         finalPrice += priceArray[0] + '.00';
@@ -98,7 +96,7 @@ let reformatPrice = (price) => {
         } else if (numAfterDecimal.length > 1) {
             numAfterDecimal = numAfterDecimal.slice(0,2); // Shave off the extra digits in case there are some
             finalPrice = numBeforeDecimal + '.' + numAfterDecimal;
-            return finalPrice; // TOENSURE: do we round up, round down or no?
+            return finalPrice; // 
         }
     }
 };
@@ -108,4 +106,4 @@ module.exports = {
     calculateTotalPrice,
     reformatPrice,
     hashString,
-}
+};
